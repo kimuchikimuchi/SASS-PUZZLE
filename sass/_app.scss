@@ -1,0 +1,95 @@
+@use 'variable' as var;
+@use 'mixin';
+
+body {
+  background-color: #f5f5f5;
+  margin: 0;
+  padding: 0;
+}
+
+header {
+  background-color: var.$navy;
+  height: 100px;
+  width: 400px;
+  position: relative;
+
+  .whitebox {
+    background-color: var.$white;
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    padding: 10px;
+    @include mixin.flex-center;
+    gap: 10px;
+
+    @include mixin.header-colorbox-classes(var.$classNames, var.$buttonColor);
+
+    @each $color, $index in var.$buttonColor {
+      .colorbox-#{$index} {
+        width: 40px;
+        height: 40px;
+        background-color: $color;
+        margin: 10px;
+      }
+    }
+  }
+}
+
+.layout {
+  display: flex;
+  position: absolute;
+  top: 100px;
+
+  .sidebar {
+    background-color: var.$green;
+    height: 250px;
+    width: 150px;
+    margin: 0;
+  }
+
+  .main {
+    background-color: var.$red;
+    height: 250px;
+    width: 250px;
+    margin: 0;
+    position: relative;
+
+    .colorbox {
+      position: absolute;
+      height: 40px;
+      width: 140px;
+      border: 5px solid var.$white;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    .colorbox-purple {
+      top: 40px;
+      left: 40px;
+      background-color: nth(var.$buttonColor, 1);
+    }
+
+    .colorbox-orange {
+      top: 100px;
+      left: 40px;
+      background-color: nth(var.$buttonColor, 2);
+    }
+
+    .colorbox-blue {
+      top: 160px;
+      left: 40px;
+      background-color: nth(var.$buttonColor, 3);
+    }
+  }
+}
+
+
+
+
+footer {
+  background-color: var.$brown;
+  height: 100px;
+  width: 400px;
+  position: absolute;
+  top: 350px;
+}

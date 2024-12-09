@@ -1,0 +1,18 @@
+@mixin flex-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+@mixin header-colorbox-classes($classNames, $buttonColors) {
+  @for $i from 1 through length($classNames) {
+    $class: nth($classNames, $i);
+    $color: nth($buttonColors, $i);
+
+    .colorbox-#{$class} {
+      width: 40px;
+      height: 40px;
+      background-color: $color;
+    }
+  }
+}
