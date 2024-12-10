@@ -1,0 +1,37 @@
+@use 'variable' as var;
+@mixin flex-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+@mixin header-colorbox-classes($classNames, $buttonColors) {
+  @for $i from 1 through length($classNames) {
+    $class: nth($classNames, $i);
+    $color: nth($buttonColors, $i);
+
+    .colorbox-#{$class} {
+      height: 40px;
+      width: 40px;
+      background-color: $color;
+    }
+  }
+}
+
+@mixin main-colorbox-classes($classNames, $buttonColors) {
+  @for $i from 1 through length($classNames) {
+    $class: nth($classNames, $i);
+    $color: nth($buttonColors, $i);
+
+    .colorbox-#{$class} {
+      position: absolute;
+      height: 40px;
+      width: 140px;
+      background-color: $color;
+      border: 5px solid var.$white;
+      box-sizing: content-box;
+      left: 40px;
+      top: #{(50px + 10px) * ($i - 1) + 40px};
+    }
+  }
+}
