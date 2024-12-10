@@ -26,8 +26,8 @@ header {
 
     @each $color, $index in var.$buttonColor {
       .colorbox-#{$index} {
-        width: 40px;
         height: 40px;
+        width: 40px;
         background-color: $color;
         margin: 10px;
       }
@@ -39,6 +39,7 @@ header {
   display: flex;
   position: absolute;
   top: 100px;
+  width: 400px;
 
   .sidebar {
     background-color: var.$green;
@@ -48,43 +49,14 @@ header {
   }
 
   .main {
-    background-color: var.$red;
+    position: relative;
     height: 250px;
     width: 250px;
-    margin: 0;
-    position: relative;
+    background-color: var.$red;
 
-    .colorbox {
-      position: absolute;
-      height: 40px;
-      width: 140px;
-      border: 5px solid var.$white;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
-    .colorbox-purple {
-      top: 40px;
-      left: 40px;
-      background-color: nth(var.$buttonColor, 1);
-    }
-
-    .colorbox-orange {
-      top: 100px;
-      left: 40px;
-      background-color: nth(var.$buttonColor, 2);
-    }
-
-    .colorbox-blue {
-      top: 160px;
-      left: 40px;
-      background-color: nth(var.$buttonColor, 3);
-    }
+    @include mixin.main-colorbox-classes(var.$classNames, var.$buttonColor);
   }
 }
-
-
-
 
 footer {
   background-color: var.$brown;
